@@ -41,11 +41,11 @@
    * The next slice's position is found by adding the difference between the next slice and the
    * current slice's position multiplied by a coef to the current slice's position.
    *
-   * This is a sinusoidal easing function with the following parameters:
+   * This is a sinusoidal easing out function with the following parameters:
    *
    * Beginning Position = currentSlice.x
    * Change = nextSlice.x - currentSlice.x
-   * Time / Duration = 0.5
+   * Time / Duration = index / arr.length
    *
    * TODO: Absract the easing and allow you to pick the easing function?
    *
@@ -64,13 +64,15 @@
       // Update the slice's position on the screen.
       slice.updatePosition();
       // Compute the nextSlice's x and y.
-      newX += (nextSlice.x - slice.x) * Math.sin(.5 * (Math.PI / 2));
-      newY += (nextSlice.y - slice.y) * Math.sin(.5 * (Math.PI / 2));
+      var deltaX = (nextSlice.x - slice.x);
+      var deltaY = (nextSlice.y - slice.y)
+      newX +=  (-1 * deltaX) * Math.cos(0.8 * (Math.PI / 2)) + deltaX;
+      newY +=  (-1 * deltaY) * Math.cos(0.8 * (Math.PI / 2)) + deltaY;
     });
   }
   function animate() {
     movePizzas();
-    requestAnimationFrame(animate);
+    window.requestAnimationFrame(animate);
   }
 
   initObjects();
