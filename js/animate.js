@@ -69,9 +69,23 @@ function movePizzas() {
     newY +=  (-1 * deltaY) * Math.cos(0.8 * (Math.PI / 2)) + deltaY;
   });
 }
+
+// rAF is not supported on some old browsers.
+if (!window.requestAnimationFrame) {
+  window.requestAnimationFrame = (function() {
+    return window.webkitRequestAnimationFrame ||
+           window.mozRequestAnimationFrame    ||
+           window.oRequestAnimationFrame      ||
+           window.msRequestAnimationFrame     ||
+           function(callback, element) {
+             window.setTimeout(callback, 1000 / 60);
+          };
+  })();
+}
+
 function animate() {
   movePizzas();
-  window.requestAnimationFrame(animate);
+  requestAnimationFrame(animate);
 }
 
 initObjects();
