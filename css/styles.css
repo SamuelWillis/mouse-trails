@@ -1,9 +1,13 @@
+html {
+  cursor: none;
+}
 body {
   background: beige;
-  cursor: none;
+  cursor: url("../img/pizza.png"), default;
 }
 img {
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 1000;
 }
