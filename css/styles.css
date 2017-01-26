@@ -3,7 +3,7 @@ html {
 }
 body {
   background: beige;
-  cursor: url("../img/pizza.png"), default;
+  cursor: url("../img/pizza.cur"), url("../img/pizza.png"), default;
 }
 img {
   position: absolute;
